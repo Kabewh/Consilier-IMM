@@ -10,10 +10,6 @@ export default function Navbar() {
   const logout = useAuthStore((state) => state.logout);
   const router = useRouter();
 
-  useEffect(() => {
-    console.log(loggedIn);
-  });
-
   const handleClick = () => {
     pb.authStore.clear();
     router.push("/");

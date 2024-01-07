@@ -1,33 +1,25 @@
 'use client'
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
 import { pb } from "../(auth)/auth"
+import { login } from "../(auth)/utils"
 import { useAuthStore } from "../(auth)/authStore"
+import { useRouter } from "next/navigation"
 
-export default function Login() {
+export default function LoginPage() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
     const router = useRouter();
-    const updateLogin = useAuthStore((state) => state.login)
+    const loginStore = useAuthStore((state) => state.login);
+    const loggedIn = useAuthStore((state) => state.loggedIn);
 
-    async function auth() {
-        try {
-            const authData = await pb.collection('users').authWithPassword(username, password);
-            console.log(pb.authStore.isValid, "inside auth")
-            updateLogin()
-
-            if (pb.authStore.isValid) {
-                router.push('/secret')
-            }
-        } catch (error) {
-            console.log('Error:', error);
-        }
-    }
+    useEffect(() => {
+        if (loggedIn) router.push('/secret')
+    }, [loggedIn])
 
     function handleSubmit(e) {
         e.preventDefault()
-        auth()
+        login(username, password, loginStore)
     }
 
     return (

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function Secret() {
     const [classNames, setClassNames] = useState("absolute bg-slate-200/75 inset-0 flex p-10") 
-    const session = true 
+    const session = false 
     const router = useRouter()
      
     useEffect(() => { 
@@ -23,8 +23,9 @@ export default function Secret() {
             <div className={classNames}>
                 <div className="m-auto bg-white rounded-lg w-80 h-64 flex shadow-lg">
                     <p className="m-auto flex flex-col">
-                        <button onClick={() => router.push('/')}>Intoarce-te</button>
-                        <button onClick={() => router.push('/contact')}>Contacteaza-ne</button>
+                        <button onClick={() => router.push('/')}>X</button>
+                        <button onClick={() => router.push('/login')}>Login</button>
+                        <button onClick={() => router.push('/contact')}>Nu ai cont? Contactaza-ne!</button>
                     </p>
                 </div>
             </div>

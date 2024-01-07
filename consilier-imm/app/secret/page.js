@@ -1,11 +1,12 @@
 'use client'
-
+import { pb } from "../components/auth"
+import { useAuthStore } from "../components/authStore";
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react";
 
 export default function Secret() {
     const [classNames, setClassNames] = useState("absolute bg-slate-200/75 inset-0 flex p-10")
-    const session = false
+    const session = useAuthStore((state) => state.loggedIn)
     const router = useRouter()
 
     useEffect(() => {

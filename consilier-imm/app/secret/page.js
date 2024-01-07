@@ -1,6 +1,6 @@
 'use client'
-import { pb } from "../components/auth"
-import { useAuthStore } from "../components/authStore";
+import { pb } from "../(auth)/auth"
+import { useAuthStore } from "../(auth)/authStore";
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react";
 

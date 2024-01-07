@@ -1,12 +1,14 @@
 "use client";
 import Link from "next/link";
-import { useAuthStore } from "./authStore";
+import { useAuthStore } from "../(auth)/authStore";
 import { useState, useEffect } from "react";
-import { pb } from "./auth";
+import { useRouter } from "next/navigation";
+import { pb } from "../(auth)/auth";
 
 export default function Navbar() {
   const loggedIn = useAuthStore((state) => state.loggedIn);
   const logout = useAuthStore((state) => state.logout);
+  const router = useRouter();
 
   useEffect(() => {
     console.log(loggedIn);
@@ -14,6 +16,7 @@ export default function Navbar() {
 
   const handleClick = () => {
     pb.authStore.clear();
+    router.push("/");
     logout();
   };
 

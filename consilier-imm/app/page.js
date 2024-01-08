@@ -1,9 +1,12 @@
-
+import BackgroundImage from '@/assets/background.jpg'
+import Image from 'next/image'
 
 export default function Home() {
   return (
     <>
-    Home
+      <section className="border">
+        
+      </section>
     </>
   )
 }

@@ -3,9 +3,9 @@
 import { useState } from "react"
 import { POST } from "../api/send/route"
 
-export default function Contact () {
+export default function Contact() {
     const [data, setData] = useState({
-        lastName: " ",
+        lastName: "",
         firstName: "",
         email: "",
         phoneNumber: "",
@@ -20,7 +20,7 @@ export default function Contact () {
             },
             body: JSON.stringify(data),
         })
-        
+
         if (response.status === 200) {
             setData({})
             alert("Email sent successfully")
@@ -29,35 +29,51 @@ export default function Contact () {
 
     return (
         <>
-        <section>
-            <form className="flex flex-col w-1/3 m-auto" onSubmit={handleSubmit}>
-                <label>Nume</label>
-                <input 
-                    className="p-1.5 mt-1 border border-black" 
-                    type="text"
-                    // onChange={(e) => setData(...data, data.lastName(e.target.value))}
-                />
-                <label>Prenume</label>
-                <input 
-                    className="p-1.5 mt-1 border border-black"
-                    type="text"
-                    // onChange={(e) => setFirstName(e.target.value)}
-                />
-                <label>Email</label>
-                <input 
-                    className="p-1.5 mt-1 border border-black" 
-                    type="text"
-                    // onChange={(e) => setEmail(e.target.value)}
-                />
-                <label>Numar de telefon</label>
-                <input 
-                    className="p-1.5 mt-1 border border-black" 
-                    type="text"
-                    // onChange={(e) => setPhoneNumber(e.target.value)}
-                />
-                <button className="bg-orange-300 w-1/3 self-center mt-2 p-2 rounded">Trimite</button>
-            </form>           
-        </section>
+            <section>
+                <form className="flex flex-col w-1/3 m-auto" onSubmit={handleSubmit}>
+                    <label>Nume</label>
+                    <input
+                        className="p-1.5 mt-1 border border-black"
+                        type="text"
+                        value={data.lastName}
+                        onChange={(e) => setData(prevData => ({
+                            ...prevData,
+                            lastName: e.target.value
+                        }))}
+                    />
+                    <label>Prenume</label>
+                    <input
+                        className="p-1.5 mt-1 border border-black"
+                        type="text"
+                        value={data.firstName}
+                        onChange={(e) => setData(prevData => ({
+                            ...prevData,
+                            firstName: e.target.value
+                        }))}
+                    />
+                    <label>Email</label>
+                    <input
+                        className="p-1.5 mt-1 border border-black"
+                        type="text"
+                        value={data.email}
+                        onChange={(e) => setData(prevData => ({
+                            ...prevData,
+                            email: e.target.value
+                        }))}
+                    />
+                    <label>Numar de telefon</label>
+                    <input
+                        className="p-1.5 mt-1 border border-black"
+                        type="text"
+                        value={data.phoneNumber}
+                        onChange={(e) => setData(prevData => ({
+                            ...prevData,
+                            phoneNumber: e.target.value
+                        }))}
+                    />
+                    <button className="bg-orange-300 w-1/3 self-center mt-2 p-2 rounded">Trimite</button>
+                </form>
+            </section>
         </>
     )
 }

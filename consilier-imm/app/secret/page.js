@@ -8,10 +8,15 @@ import { useEffect, useState } from "react";
 export default function Secret() {
     const [userRole, setUserRole] = useState("user")
     const isLoggedIn = pb.authStore.isValid;
-    async function isAdmin() {
+    const getUser = async () => {
         const user = await pb.collection("users").getFirstListItem(`username="testuser"`)
         setUserRole(user.Role)
     }
+    pb.autoCancellation(false);
+
+    useEffect(() => {
+        getUser()
+    })
 
     return (
         <>

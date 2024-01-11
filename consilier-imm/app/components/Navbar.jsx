@@ -8,7 +8,14 @@ import { Kadwa } from "next/font/google";
 const kadwa = Kadwa({ weight: "400", subsets: ["devanagari"] });
 
 export default function Navbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  pb.autoCancellation(false);
+
   const router = useRouter();
+
+  useEffect(() => {
+    setIsLoggedIn(pb.authStore.isValid);
+  });
 
   const handleLogin = () => {
     router.push("/login");
@@ -40,8 +47,11 @@ export default function Navbar() {
           <Link href="/contact" className="">
             CONTACT
           </Link>
-          <button onClick={() => handleLogin()}>LOGIN</button>
-          <button onClick={() => handleLogout()}>LOGOUT</button>
+          {isLoggedIn ? (
+            <button onClick={() => handleLogout()}>LOGOUT</button>
+          ) : (
+            <button onClick={() => handleLogin()}>LOGIN</button>
+          )}
         </ul>
       </nav>
     </>

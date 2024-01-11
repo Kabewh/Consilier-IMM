@@ -15,7 +15,6 @@ const UserView = () => {
     useEffect(() => {
         if (session) setClassNames("hidden")
         if (!session) setClassNames("absolute bg-slate-200/75 inset-0 flex p-10")
-    
 }, [session])
   return (
     <section className="flex flex-col max-w-1/2 h-2/3">

@@ -1,17 +1,23 @@
 'use client'
-import { useAuthStore } from "../(auth)/authStore";
-
 import Navbar from "../components/Navbar";
 import AdminView from "./AdminView";
 import UserView from "./UserView";
+import { pb } from "../(auth)/auth";
+import { useEffect, useState } from "react";
 
 export default function Secret() {
-    const isAdmin = useAuthStore((state) => state.admin)
+    const [userRole, setUserRole] = useState("user")
+    const isLoggedIn = pb.authStore.isValid;
+    async function isAdmin() {
+        const user = await pb.collection("users").getFirstListItem(`username="testuser"`)
+        setUserRole(user.Role)
+    }
+
     return (
         <>
             <Navbar />
             <div className="max-w-screen-xl mx-auto">
-                {isAdmin ? <AdminView /> : <UserView />}
+                {isLoggedIn && userRole === "admin" ? <AdminView /> : <UserView session={isLoggedIn} />}
             </div>
         </>
     )

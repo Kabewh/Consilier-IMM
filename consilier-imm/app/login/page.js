@@ -2,46 +2,35 @@
 import { useState, useEffect } from "react"
 import Navbar from "../components/Navbar"
 import { login } from "../(auth)/utils"
-import { getLoggedInUserDetails } from "../(auth)/utils"
-import { useAuthStore } from "../(auth)/authStore"
 import { useRouter } from "next/navigation"
+import { pb } from "../(auth)/auth"
 
 export default function LoginPage() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
     const router = useRouter();
-    const loginStore = useAuthStore((state) => state.login);
-    const loggedIn = useAuthStore((state) => state.loggedIn);
+    const isLoggedIn = pb.authStore.isValid
 
-    const isAdmin = useAuthStore((state) => state.admin);
-    const removeAdmin = useAuthStore((state) => state.removeAdmin);
-    const setAdmin = useAuthStore((state) => state.setAdmin);
-
-    useEffect(() => {
-        if (loggedIn) router.push('/secret')
-    }, [loggedIn])
-
-    async function checkUserRole(username) {
-        const userDetails = await getLoggedInUserDetails(username)
-        if (userDetails === "admin") {
-            setAdmin()
-            alert(`user ${username} is admin`)
-        }
-        if (userDetails === "user") {
-            removeAdmin()
-            alert('Admin removed')
+    async function login(username, password) {
+        try {
+            const authData = await pb
+                .collection("users")
+                .authWithPassword(username, password);
+            router.push("/secret")
+        } catch (error) {
+            console.log("Error:", error);
         }
     }
-    async function handleSubmit(e) {
+
+    function handleSubmit(e) {
         e.preventDefault()
-        login(username, password, loginStore)
-        checkUserRole(username)
+        login(username, password)
     }
 
     return (
         <>
-        <Navbar/>
+            <Navbar />
             <section className="flex flex-col h-2/3">
                 <div className="m-auto bg-slate-200/75 rounded-lg w-80 h-64 flex shadow-lg flex flex-col justify-center items-center">
                     <h1 className="mb-5">CONSILIER IMM</h1>

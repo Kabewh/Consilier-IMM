@@ -15,8 +15,7 @@ export async function login(username, password, loginStore) {
 export async function getLoggedInUserDetails(username){
   try{
     const userDetails = await pb.collection("users").getFirstListItem(`username="${username}"`)
-    const admin = userDetails.Role
-    return admin
+    return userDetails.Role
   } catch (error) {
     console.log("Error:", error)
   }

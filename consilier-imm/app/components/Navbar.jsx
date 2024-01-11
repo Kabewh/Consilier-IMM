@@ -19,7 +19,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="p-5 bg-orange-500 text-lg text-white">
-        <ul className="flex justify-end gap-10 max-w-screen-xl mx-auto">
+        <ul className="flex justify-end gap-9 max-w-screen-2xl mx-auto">
           <Link href="/" className="cursor-pointer">
             ACASA
           </Link>

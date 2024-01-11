@@ -7,9 +7,18 @@ export async function login(username, password, loginStore) {
       .collection("users")
       .authWithPassword(username, password);
     loginStore();
-    
   } catch (error) {
     console.log("Error:", error);
+  }
+}
+
+export async function getLoggedInUserDetails(username){
+  try{
+    const userDetails = await pb.collection("users").getFirstListItem(`username="${username}"`)
+    const admin = userDetails.Role
+    return admin
+  } catch (error) {
+    console.log("Error:", error)
   }
 }
 

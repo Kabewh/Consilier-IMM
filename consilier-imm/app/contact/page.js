@@ -1,7 +1,7 @@
 'use client'
 
+import Navbar from "../components/Navbar"
 import { useState } from "react"
-import { POST } from "../api/send/route"
 
 export default function Contact() {
     const [data, setData] = useState({
@@ -30,6 +30,7 @@ export default function Contact() {
     return (
         <>
             <section>
+                <Navbar/>
                 <form className="flex flex-col w-1/3 m-auto" onSubmit={handleSubmit}>
                     <label>Nume</label>
                     <input

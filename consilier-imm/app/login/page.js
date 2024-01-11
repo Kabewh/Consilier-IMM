@@ -1,7 +1,8 @@
 'use client'
 import { useState, useEffect } from "react"
-import { pb } from "../(auth)/auth"
+import Navbar from "../components/Navbar"
 import { login } from "../(auth)/utils"
+import { getLoggedInUserDetails } from "../(auth)/utils"
 import { useAuthStore } from "../(auth)/authStore"
 import { useRouter } from "next/navigation"
 
@@ -13,17 +14,34 @@ export default function LoginPage() {
     const loginStore = useAuthStore((state) => state.login);
     const loggedIn = useAuthStore((state) => state.loggedIn);
 
+    const isAdmin = useAuthStore((state) => state.admin);
+    const removeAdmin = useAuthStore((state) => state.removeAdmin);
+    const setAdmin = useAuthStore((state) => state.setAdmin);
+
     useEffect(() => {
         if (loggedIn) router.push('/secret')
     }, [loggedIn])
 
-    function handleSubmit(e) {
+    async function checkUserRole(username) {
+        const userDetails = await getLoggedInUserDetails(username)
+        if (userDetails === "admin") {
+            setAdmin()
+            alert(`user ${username} is admin`)
+        }
+        if (userDetails === "user") {
+            removeAdmin()
+            alert('Admin removed')
+        }
+    }
+    async function handleSubmit(e) {
         e.preventDefault()
         login(username, password, loginStore)
+        checkUserRole(username)
     }
 
     return (
         <>
+        <Navbar/>
             <section className="flex flex-col h-2/3">
                 <div className="m-auto bg-slate-200/75 rounded-lg w-80 h-64 flex shadow-lg flex flex-col justify-center items-center">
                     <h1 className="mb-5">CONSILIER IMM</h1>

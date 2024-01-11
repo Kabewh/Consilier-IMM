@@ -18,27 +18,27 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="p-5 bg-orange-500">
+      <nav className="p-5 bg-orange-500 text-lg text-white">
         <ul className="flex justify-end gap-10 max-w-screen-xl mx-auto">
           <Link href="/" className="cursor-pointer">
-            Acasa
+            ACASA
           </Link>
           <Link href="/despre-noi" className="">
-            Despre Noi
+            DESPRE NOI
           </Link>
           <Link href="/servicii" className="">
-            Servicii
+            SERVICII
           </Link>
           <Link href="/secret" className="">
-            Secret
+            ARTICOLE
           </Link>
           <Link href="/contact" className="">
-            Contact
+            CONTACT
           </Link>
           {loggedIn ? (
             <button onClick={() => handleClick()}>Logout</button>
           ) : (
-            <Link href="/login">Login</Link>
+            <Link href="/login">LOGIN</Link>
           )}
         </ul>
       </nav>

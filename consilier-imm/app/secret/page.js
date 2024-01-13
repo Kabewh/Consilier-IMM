@@ -13,7 +13,6 @@ export default function Secret() {
         setUserRole(user.Role)
     }
     pb.autoCancellation(false);
-
     useEffect(() => {
         getUser()
     })

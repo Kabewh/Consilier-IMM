@@ -46,18 +46,18 @@ const UserView = ({ session }) => {
   return (
     <section className="flex flex-col max-w-1/2 h-2/3">
       {articles.map((article) => (
-        <Link
-          key={article.id}
-          href={"/secret/[id]"}
-          as={`/secret/${article.id}`}
-        >
           <div className="bg-zinc-100 border p-3 w-1/4">
+            <Link
+                key={article.id}
+                href={"/secret/[id]"}
+                as={`/secret/${article.id}`}
+            >
             <ul className="text-center">
               <li className="font-bold text-lg">{article.title}</li>
               <li className="text-sm">{article.description}</li>
             </ul>
+            </Link>
           </div>
-        </Link>
       ))}
       {loggedIn ? (
         <div className="hidden">

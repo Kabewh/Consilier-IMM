@@ -37,7 +37,6 @@ const UserView = ({ session }) => {
   const deleteArticle = async (id) => {
     try {
       await pb.collection('articles').delete(id); 
-      alert('collection deleted')
       getArticles()
     } catch (e) {
       console.log(error)

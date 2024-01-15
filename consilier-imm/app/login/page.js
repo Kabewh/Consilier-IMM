@@ -1,7 +1,6 @@
 'use client'
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Navbar from "../components/Navbar"
-import { login } from "../(auth)/utils"
 import { useRouter } from "next/navigation"
 import { pb } from "../(auth)/auth"
 
@@ -10,7 +9,6 @@ export default function LoginPage() {
     const [password, setPassword] = useState('')
 
     const router = useRouter();
-    const isLoggedIn = pb.authStore.isValid
 
     async function login(username, password) {
         try {

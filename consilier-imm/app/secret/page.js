@@ -9,7 +9,7 @@ export default function Secret() {
     const [userRole, setUserRole] = useState("user")
     const isLoggedIn = pb.authStore.isValid;
     const getUser = async () => {
-        const user = await pb.collection("users").getFirstListItem(`username="testuser"`)
+        const user = await pb.collection("users").getFirstListItem(`username="${pb.authStore.model.username}"`)
         setUserRole(user.Role)
     }
     pb.autoCancellation(false);

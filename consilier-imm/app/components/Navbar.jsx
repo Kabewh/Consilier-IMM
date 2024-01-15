@@ -9,12 +9,14 @@ const kadwa = Kadwa({ weight: "400", subsets: ["devanagari"] });
 
 export default function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const [role, setRole] = useState(null);
   pb.autoCancellation(false);
 
   const router = useRouter();
 
   useEffect(() => {
     setIsLoggedIn(pb.authStore.isValid);
+    if(pb.authStore.model) setRole(pb.authStore.model.Role);    
   });
 
   const handleLogin = () => {
@@ -47,6 +49,9 @@ export default function Navbar() {
           <Link href="/contact" className="">
             CONTACT
           </Link>
+          {
+            role === 'admin' ? <Link href="/admin_panel">PANOU DE ADMINISTRARE</Link> : null
+          }
           {isLoggedIn ? (
             <button onClick={() => handleLogout()}>LOGOUT</button>
           ) : (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Kadwa } from "next/font/google";
 import { pb } from "../(auth)/auth";
 import UserView from "./UserView";

@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { pb } from "../(auth)/auth";
-import { render } from "react-dom";
 import Link from "next/link";
 
 const UserView = ({ session }) => {
@@ -35,6 +34,16 @@ const UserView = ({ session }) => {
     }
   };
 
+  const deleteArticle = async (id) => {
+    try {
+      await pb.collection('articles').delete(id); 
+      alert('collection deleted')
+      getArticles()
+    } catch (e) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
     setLoggedIn(session);
   });
@@ -45,18 +54,19 @@ const UserView = ({ session }) => {
 
   return (
     <section className="flex flex-col max-w-1/2 h-2/3">
-      {articles.map((article) => (
-          <div className="bg-zinc-100 border p-3 w-1/4">
+      {articles.map((article, key) => (
+          <div className="bg-zinc-100 border text-center p-3 w-1/4 flex flex-col" key={article.id}>
             <Link
                 key={article.id}
                 href={"/secret/[id]"}
                 as={`/secret/${article.id}`}
             >
-            <ul className="text-center">
+            <ul className="">
               <li className="font-bold text-lg">{article.title}</li>
               <li className="text-sm">{article.description}</li>
             </ul>
             </Link>
+            <button className="place-self-end px-2 bg-red-500" onClick={() => deleteArticle(article.id)}>X</button>
           </div>
       ))}
       {loggedIn ? (

@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 import { pb } from "@/app/(auth)/auth";
+import Navbar from "@/app/components/Navbar";
 
 export default function Posts({ params }) {
     const [articles, setArticles] = useState([
@@ -17,7 +18,6 @@ export default function Posts({ params }) {
             const record = await pb.collection('articles').getList(1, 50, {
                 filter: `id = '${params.id}'`,
             });
-
             setArticles(record.items);
         } catch (error) {
             console.error("Error fetching articles:", error);
@@ -30,13 +30,16 @@ export default function Posts({ params }) {
 
 
     return (
-        <div>
-            {articles.map((article, key) => (
-                <ul key={article.id}>
-                    <li className="font-bold text-lg">{article.title}</li>
-                    <li className="text-sm">{article.content}</li>
-                </ul>
-            ))}
-        </div>
+        <>
+        <Navbar/>
+            <div>
+                {articles.map((article, key) => (
+                    <ul key={article.id}>
+                        <li className="font-bold text-lg">{article.title}</li>
+                        <li className="text-sm">{article.content}</li>
+                    </ul>
+                ))}
+            </div>
+        </>
     );
 }

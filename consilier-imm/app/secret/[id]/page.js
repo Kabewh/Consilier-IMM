@@ -14,17 +14,11 @@ export default function Posts({ params }) {
 
     const getArticles = async () => {
         try {
-            const record = await pb.collection("articles").getFullList({
-                sort: "-created",
+            const record = await pb.collection('articles').getList(1, 50, {
+                filter: `id = '${params.id}'`,
             });
 
-            const renderedArticles = record.map((article) => ({
-                id: article.id,
-                title: article.title,
-                description: article.description,
-                content: article.content,
-            }));
-            setArticles(renderedArticles);
+            setArticles(record.items);
         } catch (error) {
             console.error("Error fetching articles:", error);
         }
@@ -37,11 +31,11 @@ export default function Posts({ params }) {
 
     return (
         <div>
-            {articles.map((article) => (
-                <>
+            {articles.map((article, key) => (
+                <ul key={article.id}>
                     <li className="font-bold text-lg">{article.title}</li>
                     <li className="text-sm">{article.content}</li>
-                </>
+                </ul>
             ))}
         </div>
     );

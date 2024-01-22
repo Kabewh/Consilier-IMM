@@ -6,16 +6,21 @@ import { pb } from "../(auth)/auth";
 
 export default function AdminPanel () {
     const [users, setUsers] = useState(null)
-    const [newUsername, setNewUsername] = useState(null)
-    const [newPassword, setNewPassword] = useState(null)
-    const [newUserRole, setNewUserRole] = useState(null)
+    const [admins, setAdmins] = useState(null)
+    const [newUsername, setNewUsername] = useState("")
+    const [newPassword, setNewPassword] = useState("")
+    const [newUserRole, setNewUserRole] = useState("")
     pb.autoCancellation(false);
 
     const getUsers = async () => {
         const users = await pb.collection('users').getFullList({
             sort: '-created',
         });
-        console.log(users)
+       
+        const admins = users.filter((user) => user.Role === 'admin');
+        const adminCount = admins.length;
+
+        setAdmins(adminCount)
         setUsers(users)
     }
 
@@ -37,8 +42,12 @@ export default function AdminPanel () {
 
     async function deleteUser(id) {
         try {
-            await pb.collection('users').delete(id);
-            getUsers()
+            if(admins > 1) {
+                await pb.collection('users').delete(id);
+                getUsers()
+            } else {
+                alert("Nu poti sterge ultimul admin")
+            }
         } catch (e) {
             console.log(e)
         }
@@ -47,7 +56,6 @@ export default function AdminPanel () {
 
     useEffect(() => {
         getUsers()
-        console.log(pb.admins)
     }, [])
 
     return (

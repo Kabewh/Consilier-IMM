@@ -31,7 +31,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`p-5 bg-orange-500 text-lg text-white ${kadwa.className}`}
+        className={`p-5 bg-orange-800 text-lg text-white ${kadwa.className}`}
       >
         <ul className="flex justify-end gap-9 max-w-screen-2xl mx-auto">
           <Link href="/" className="cursor-pointer">

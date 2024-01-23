@@ -11,34 +11,45 @@ const AdminView = () => {
     title: "",
     description: "",
     content: "",
+    photo: "",
   });
+
+  const formData = new FormData()
 
   const loggedIn = pb.authStore.isValid;
 
-  const handleSubmit = async (e) => {
+  const addArticle = async (e) => {
     e.preventDefault();
     if (!data.content || !data.description || !data.title) return;
-    const record = await pb.collection("articles").create(data);
-    if (record.created) alert("Articol adaugat cu succes!");
+    formData.append('title', data.title)
+    formData.append('description', data.description)
+    formData.append('content', data.content)
+    formData.append('photo', data.photo)
+    console.log(formData)
+    const record = await pb.collection("articles").create(formData)
+    if (record.created) 
+    {
+      alert("Articol adaugat cu succes!");
+    }
   };
 
   return (
-    <div className={`${kadwa.className} mx-3 mt-10`}>
-      <button
+    <div className={`${kadwa.className} mt-10 mx-auto`}>
+      {!open && <button
         onClick={() => setOpen(true)}
         className="text-white p-3 bg-orange-500 shadow-lg rounded-md hover:bg-orange-600 transition"
       >
         ADAUGA ARTICOL
-      </button>
+      </button>}
       {open ? (
-        <section className="ml-48 flex flex-col w-2/5">
+        <section className="mx-auto flex flex-col w-2/5">
           <button
             className="bg-red-500 p-2 w-10 self-end"
             onClick={() => setOpen(false)}
           >
             X
           </button>
-          <form onSubmit={handleSubmit} className="flex flex-col">
+          <form onSubmit={addArticle} className="flex flex-col">
             <label>Titlu</label>
             <input
               type="text"
@@ -74,7 +85,18 @@ const AdminView = () => {
                 }))
               }
             />
-            <button className="self-start bg-green-500 p-2">Send</button>
+            <label>Poza</label>
+            <input
+              type="file"
+              className="border"
+              onChange={(e) =>
+                setData((prevData) => ({
+                  ...prevData,
+                  photo: e.target.files[0],
+                }))
+              }
+            />
+            <button className="self-start bg-green-500 p-2">Adauga</button>
           </form>
         </section>
       ) : (

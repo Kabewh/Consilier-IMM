@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { pb } from "@/app/(auth)/auth";
 import Navbar from "@/app/components/Navbar";
+import Topbar from "@/app/components/Topbar";
 
 export default function Posts({ params }) {
     const [articles, setArticles] = useState([
@@ -31,6 +32,8 @@ export default function Posts({ params }) {
 
     return (
         <>
+        <Topbar/>
+        <div className="h-screen">
         <Navbar/>
             <div>
                 {articles.map((article, key) => (
@@ -40,6 +43,7 @@ export default function Posts({ params }) {
                     </ul>
                 ))}
             </div>
+        </div>
         </>
     );
 }

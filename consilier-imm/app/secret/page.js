@@ -4,6 +4,7 @@ import AdminView from "./AdminView";
 import UserView from "./UserView";
 import { pb } from "../(auth)/auth";
 import { useEffect, useState } from "react";
+import Topbar from "../components/Topbar";
 
 export default function Secret() {
     const [userRole, setUserRole] = useState("user")
@@ -19,9 +20,12 @@ export default function Secret() {
 
     return (
         <>
+            <Topbar/>
+                <div className="h-screen">
             <Navbar />
-            <div className="max-w-screen-xl mx-auto">
-                {isLoggedIn && userRole === "admin" ? <AdminView /> : <UserView session={isLoggedIn} />}
+                <div className="max-w-screen-xl mx-auto">
+                    {isLoggedIn && userRole === "admin" ? <AdminView /> : <UserView session={isLoggedIn} />}
+                </div>
             </div>
         </>
     )

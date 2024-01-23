@@ -3,6 +3,7 @@ import bgImage from '@/public/homeBackground.png'
 import Navbar from '@/app/components/Navbar'
 import { Kadwa } from 'next/font/google'
 import Topbar from './components/Topbar'
+import Link from 'next/link'
 
 const kadwa = Kadwa({ weight: '400', subsets: ['devanagari'] })
 
@@ -10,11 +11,17 @@ export default function Home() {
   return (
     <>
       <section className={`${kadwa.className}`}>
+      <Topbar />
         <div className='bg-home-background bg-cover bg-center bg-fixed inset-0 h-screen'>
-          <Topbar />
-          <Navbar />
-          <div className='max-w-screen-xl mx-auto text-white'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et quasi, sit voluptatem aliquam molestiae officia repellat enim est dolore autem. Consectetur libero expedita sapiente incidunt vitae blanditiis, ex repellendus.
+        <Navbar />
+          <div className='max-w-screen-xl mx-auto text-white h-5/6 flex flex-col items-center justify-center'>
+            <div className='flex flex-col items-center justify-center'>
+              <h1 className='text-7xl font-bold'>ASOCIATIA CONSILIER IMM</h1>
+              <p className='text-3xl text-center mt-5'>
+              Experiență juridică de 15+ ani, susținem afacerile mici și mijlocii pentru a le permite să se focuseze pe succesul lor.
+              </p>
+              <Link href={"/contact"} className='p-5 bg-orange-500 rounded-sm mt-8 text-lg hover:bg-orange-600 hover:shadow-xl hover:shadow-orange-900 transition ease-in-out duration-300'>CONTACTEAZA-NE</Link>
+            </div>
           </div>
         </div>
       </section>

@@ -32,14 +32,10 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`p-3 text-lg text-white bg-orange-500 ${kadwa.className} shadow-md shadow-black/50`}
+        className={`p-3 text-lg text-white bg-orange-800 ${kadwa.className} shadow-md shadow-black/50`}
       >
-          <ul className="flex justify-between items-center gap-8 max-w-screen-2xl mx-auto">
-            <Image src={"/logo.png"} alt={"Logo"}width={50} height={50}/>
-            <div className="flex items-center gap-8">
-            <Link href="/" className="cursor-pointer">
-              ACASA
-            </Link>
+          <ul className="flex items-center gap-5 max-w-screen-2xl mx-auto">
+            <Link href="/" className="cursor-pointer"><Image src={"/logo.png"} alt={"Logo"} width={50} height={50}/></Link>
             <Link href="/despre-noi" className="">
               DESPRE NOI
             </Link>
@@ -52,13 +48,14 @@ export default function Navbar() {
             <Link href="/contact" className="">
               CONTACT
             </Link>
+            <div className="flex flex-grow justify-end">
             {
               role === 'admin' ? <Link href="/admin_panel">PANOU DE ADMINISTRARE</Link> : null
             }
             {isLoggedIn ? (
               <div className="cursor-pointer" onClick={() => handleLogout()}>LOGOUT</div>
             ) : (
-              <div onClick={() => handleLogin()}>LOGIN</div>
+              <div className="cursor-pointer" onClick={() => handleLogin()}>LOGIN</div>
             )}
             </div>
             

@@ -20,7 +20,9 @@ export default function Home() {
               <p className='text-3xl text-center mt-5'>
               Experiență juridică de 15+ ani, susținem afacerile mici și mijlocii pentru a le permite să se focuseze pe succesul lor.
               </p>
-              <Link href={"/contact"} className='p-5 bg-orange-500 rounded-sm mt-8 text-lg hover:bg-orange-600 hover:shadow-xl hover:shadow-orange-900 transition ease-in-out duration-300'>CONTACTEAZA-NE</Link>
+              <div className='flex items-start'>
+                <Link href={"/contact"} className='p-5 bg-orange-800 rounded-sm mt-8 text-lg hover:bg-orange-900 transition ease-in-out duration-300'>CONTACTEAZA-NE</Link>
+              </div>
             </div>
           </div>
         </div>

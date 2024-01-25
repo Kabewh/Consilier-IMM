@@ -32,7 +32,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`p-3 text-lg text-white bg-orange-500 ${kadwa.className}`}
+        className={`p-3 text-lg text-white bg-orange-500 ${kadwa.className} shadow-md shadow-black/50`}
       >
           <ul className="flex justify-between items-center gap-8 max-w-screen-2xl mx-auto">
             <Image src={"/logo.png"} alt={"Logo"}width={50} height={50}/>

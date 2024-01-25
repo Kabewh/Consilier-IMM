@@ -35,16 +35,10 @@ const AdminView = () => {
 
   return (
     <div className={`${kadwa.className} mt-10 mx-auto`}>
-      {!open && <button
-        onClick={() => setOpen(true)}
-        className="text-white p-3 bg-orange-500 shadow-lg rounded-md hover:bg-orange-600 transition"
-      >
-        ADAUGA ARTICOL
-      </button>}
       {open ? (
         <section className="mx-auto flex flex-col w-2/5">
           <button
-            className="bg-red-500 p-2 w-10 self-end"
+            className="bg-red-500 p-2 w-10"
             onClick={() => setOpen(false)}
           >
             X
@@ -102,6 +96,14 @@ const AdminView = () => {
       ) : (
         <UserView session={loggedIn} />
       )}
+      <div className="flex flex-col items-end">
+        {!open && <button
+          onClick={() => setOpen(true)}
+          className="text-white p-3 bg-orange-500 shadow-lg rounded-md hover:bg-orange-600 transition w-48 mb-10"
+        >
+          ADAUGA ARTICOL
+        </button>}
+      </div>
     </div>
   );
 };

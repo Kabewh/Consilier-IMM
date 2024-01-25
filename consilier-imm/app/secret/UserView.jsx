@@ -65,22 +65,23 @@ const UserView = ({ session }) => {
 
   return (
     <section className='flex flex-col max-w-1/2'>
-      <h1 className="text-5xl">Noutati</h1>
+      <h1 className="text-5xl text-center mt-10">Articole de actualitate cu privire la legislatia IMM-urilor</h1>
+      <h2 className="ml-24 text-3xl mt-10">Ultimele Articole</h2>
       {articles.map((article, key) => (
-          <div className="mx-auto min-w-[650px]" key={article.id}>
+          <div className="ml-24 w-[650px] mt-5" key={article.id}>
               <ul className="flex min-h-44 gap-5 mt-5 border-b py-2">
                 <div className="flex w-1/3">
                   <Image src={`${article.photo}`} width={200} height={50} alt="postPhoto" className="bg-cover bg-center"/>
                 </div>
-                <div className={`flex flex-col w-2/3 pt-2 `}>
+                <div className={`flex flex-col w-2/3 pt-2 break-words`}>
                   <Link
                     key={article.id}
                     href={"/secret/[id]"}
                     as={`/secret/${article.id}`}
                   >
-                    <li className={`font-bold text-xl ${patua} hover:text-orange-700`}>{article.title}</li>
+                    <li className={`font-bold text-xl ${patua} hover:text-orange-700 mt-2`}>{article.title}</li>
                   </Link>
-                  <li className="text-md max-w-96">{article.description}</li>
+                  <li className="text-md max-w-96 mt-3">{article.description}</li>
                 </div>
               </ul>
             {role === 'admin' ? <button className="place-self-end px-2 bg-red-500" onClick={() => deleteArticle(article.id)}>X</button> : null}

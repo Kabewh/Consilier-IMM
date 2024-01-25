@@ -48,7 +48,7 @@ export default function Navbar() {
             <Link href="/contact" className="">
               CONTACT
             </Link>
-            <div className="flex flex-grow justify-end">
+            <div className="flex flex-grow justify-end gap-6">
             {
               role === 'admin' ? <Link href="/admin_panel">PANOU DE ADMINISTRARE</Link> : null
             }

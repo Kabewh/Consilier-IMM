@@ -87,31 +87,7 @@ const UserView = ({ session }) => {
             {role === 'admin' ? <button className="place-self-end px-2 bg-red-500" onClick={() => deleteArticle(article.id)}>X</button> : null}
           </div>
       ))}
-      {loggedIn ? (
-        <div className="hidden">
-          <div className="m-auto bg-white rounded-lg w-80 h-64 flex shadow-lg">
-            <p className="m-auto flex flex-col">
-              <button onClick={() => router.push("/")}>X</button>
-              <button onClick={() => router.push("/login")}>Login</button>
-              <button onClick={() => router.push("/contact")}>
-                Nu ai cont? Contactaza-ne!
-              </button>
-            </p>
-          </div>
-        </div>
-      ) : (
-        <div className="absolute bg-slate-200/75 inset-0 flex p-10">
-          <div className="m-auto bg-white rounded-lg w-80 h-64 flex shadow-lg">
-            <p className="m-auto flex flex-col">
-              <button onClick={() => router.push("/")}>X</button>
-              <button onClick={() => router.push("/login")}>Login</button>
-              <button onClick={() => router.push("/contact")}>
-                Nu ai cont? Contactaza-ne!
-              </button>
-            </p>
-          </div>
-        </div>
-      )}
+      
     </section>
   );
 };

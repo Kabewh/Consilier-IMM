@@ -42,17 +42,24 @@ export default function AdminPanel () {
 
     async function deleteUser(id) {
         try {
-            if(admins > 1) {
-                await pb.collection('users').delete(id);
-                getUsers()
-            } else {
-                alert("Nu poti sterge ultimul admin")
+            const updatedUsers = [...users];
+            const userToDelete = updatedUsers.find(user => user.id === id);
+    
+            if (userToDelete.Role === 'admin') {
+                const remainingAdmins = admins - 1;
+                if (remainingAdmins === 0) {
+                    alert("Nu poti sterge ultimul admin");
+                    return;
+                }
             }
+    
+            await pb.collection('users').delete(id);
+            getUsers();
         } catch (e) {
-            console.log(e)
+            console.log(e);
         }
     }
-
+    
 
     useEffect(() => {
         getUsers()

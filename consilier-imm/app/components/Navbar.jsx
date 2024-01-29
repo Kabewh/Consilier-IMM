@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { pb } from "../(auth)/auth";
 import { Kadwa } from "next/font/google";
 import Image from "next/image";
+import Dropdown from "./Dropdown";
 
 const kadwa = Kadwa({ weight: "400", subsets: ["devanagari"] });
 
@@ -50,7 +51,7 @@ export default function Navbar() {
             </Link>
             <div className="flex flex-grow justify-end gap-6">
             {
-              role === 'admin' ? <Link href="/admin_panel">PANOU DE ADMINISTRARE</Link> : null
+              role === 'admin' ? <Dropdown/> : null
             }
             {isLoggedIn ? (
               <div className="cursor-pointer" onClick={() => handleLogout()}>LOGOUT</div>

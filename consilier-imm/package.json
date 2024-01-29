@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^41.0.0",
+    "@ckeditor/ckeditor5-react": "^6.2.0",
+    "html-react-parser": "^5.1.1",
     "js-cookie": "^3.0.5",
     "next": "^14.1.0",
     "pocketbase": "^0.20.1",

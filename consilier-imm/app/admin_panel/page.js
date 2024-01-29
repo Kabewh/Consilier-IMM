@@ -3,6 +3,7 @@
 import Navbar from "../components/Navbar";
 import {useState, useEffect} from 'react';
 import { pb } from "../(auth)/auth";
+import Topbar from "../components/Topbar";
 
 export default function AdminPanel () {
     const [users, setUsers] = useState(null)
@@ -67,6 +68,8 @@ export default function AdminPanel () {
 
     return (
         <>
+        <Topbar/>
+        <div className="h-screen">
             <Navbar />
             <div className="container mx-auto my-8 flex flex-col">
                 <h2 className="text-2xl font-bold mb-4">Utilizatori</h2>
@@ -127,6 +130,7 @@ export default function AdminPanel () {
                     </select>
                 </div>
             </div>
+        </div>
         </>
     )
 }

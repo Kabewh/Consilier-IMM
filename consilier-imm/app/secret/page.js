@@ -30,7 +30,7 @@ export default function Secret() {
                 <div className="fixed grid place-items-center backdrop-blur-sm top-0 right-0 left-0 z-50 w-full inset-0 h-modal h-full justify-center items-center">
                 <div className="relative container mx-auto px-6">
                     <div className="m-auto">
-                    <div className="rounded-xl bg-white bg-orange-800/95 shadow-2xl border border-orange-800 min-w-[400px]">
+                    <div className="rounded-xl bg-orange-800/95 shadow-2xl border border-orange-800 min-w-[400px]">
                         <div className="p-8">
                         <div className="absolute top-4 right-10">
                             <Link href={"/"}>

@@ -16,6 +16,7 @@ const UserView = ({ session }) => {
     {
       id: "",
       title: "",
+      created: "",
       description: "",
       content: "",
       photo: "",
@@ -30,10 +31,18 @@ const UserView = ({ session }) => {
 
       const renderedArticles = record.map((article) => {
         const url = pb.files.getUrl(article, article.photo);
-        console.log(url)
+        
+        const date = new Date(article.created)
+        const formattedDate = date.toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric"
+        })
+
       return ({
         id: article.id,
         title: article.title,
+        created: formattedDate,
         description: article.description,
         content: article.content,
         photo: url
@@ -64,27 +73,26 @@ const UserView = ({ session }) => {
   }, [loggedIn]);
 
   return (
-    <section className='flex flex-col max-w-1/2'>
-      <h1 className="text-5xl text-center mt-10">Articole de actualitate cu privire la legislatia IMM-urilor</h1>
-      <h2 className="ml-24 text-3xl mt-10">Ultimele Articole</h2>
+    <section className='flex flex-col max-w-1/2 justify-center items-center'>
       {articles.map((article, key) => (
-          <div className="ml-24 w-[650px] mt-5" key={article.id}>
-              <ul className="flex min-h-44 gap-5 mt-5 border-b py-2">
-                <div className="flex w-1/3">
-                  <Image src={`${article.photo}`} width={200} height={50} alt="postPhoto" className="bg-cover bg-center"/>
+          <div className="w-[800px] mt-5 shadow-md bg-white" key={article.id}>
+            <div className="flex flex-grow justify-end">{role === 'admin' ? <button className="px-2 bg-red-500 rounded" onClick={() => deleteArticle(article.id)}>X</button> : null}</div>
+              <ul className="flex min-h-44 gap-5 py-5">
+                <div className="flex w-1/3 pt-2">
+                  <p className="mt-2 mx-auto">{article.created}</p>
                 </div>
-                <div className={`flex flex-col w-2/3 pt-2 break-words`}>
+                <div className={`flex flex-col w-2/3 pt-2`}>
                   <Link
+                    className=""
                     key={article.id}
                     href={"/secret/[id]"}
                     as={`/secret/${article.id}`}
                   >
                     <li className={`font-bold text-xl ${patua} hover:text-orange-700 mt-2`}>{article.title}</li>
                   </Link>
-                  <li className="text-md max-w-96 mt-3">{article.description}</li>
+                  <li className="text-md max-w-96 mt-3 break-words">{article.description}</li>
                 </div>
               </ul>
-            {role === 'admin' ? <button className="place-self-end px-2 bg-red-500" onClick={() => deleteArticle(article.id)}>X</button> : null}
           </div>
       ))}
       

@@ -38,7 +38,7 @@ export default function Contact() {
             <section className={`h-screen ${kadwa.className}`}>
                 <Navbar/>
                 <div className="flex flex-col justify-center items-center h-[80vh]">
-                    <div className="grid grid-cols-2 space-10 h-[70vh] border max-w-screen-xl shadow-lg">
+                    <div className="grid grid-cols-2 space-10 h-[70vh] border max-w-screen-xl shadow-lg bg-white rounded-lg">
                         <div className="flex justify-center items-center ml-24">
                             <div className="flex flex-col h-2/4">
                                 <h1 className="text-5xl font-bold text-zinc-800">CONTACTEAZA-NE</h1>

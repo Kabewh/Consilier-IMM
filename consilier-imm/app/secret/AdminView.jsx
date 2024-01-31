@@ -11,7 +11,7 @@ const AdminView = () => {
   const loggedIn = pb.authStore.isValid;
 
   return (
-    <div className={`${kadwa.className} mt-10 mx-auto mb-10`}>
+    <div className={`${kadwa.className} mt-10 mx-auto`}>
       <UserView session={loggedIn} />
     </div>
   );

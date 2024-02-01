@@ -4,6 +4,7 @@ import Navbar from '@/app/components/Navbar'
 import { Kadwa } from 'next/font/google'
 import Topbar from './components/Topbar'
 import Link from 'next/link'
+import Footer from './components/Footer'
 
 const kadwa = Kadwa({ weight: '400', subsets: ['devanagari'] })
 
@@ -26,6 +27,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+      <Footer/>
       </section>
     </>
   )

@@ -68,7 +68,7 @@ const UserView = ({ session }) => {
     useEffect(() => {
         const updateArticlesPerPage = () => {
             const screenHeight = window.innerHeight;
-            const articleHeight = 300; // Adjust this value based on your article's height
+            const articleHeight = 220; // Adjust this value based on your article's height
             const newArticlesPerPage = Math.floor(screenHeight / articleHeight);
             console.log(newArticlesPerPage)
             setArticlesPerPage(newArticlesPerPage);

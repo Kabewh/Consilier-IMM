@@ -18,6 +18,7 @@ export default function AdaugaPostareNoua() {
 
     const addArticle = async (e) => {
         e.preventDefault();
+        console.log(data)
         if (!data.content || !data.description || !data.title) return;
         const record = await pb.collection("articles").create(data);
         if (record.created) {
@@ -50,7 +51,17 @@ export default function AdaugaPostareNoua() {
                     required
                   />
                 </div>
-
+                <label>Poza</label>
+                <input
+                  type="file"
+                  className="border"
+                  onChange={(e) =>
+                    setData((prevData) => ({
+                      ...prevData,
+                      photo: e.target.files[0],
+                    }))
+                  }
+                />
                 <div className="mb-4">
                   <label className="text-xl text-gray-600">Description</label>
                   <input

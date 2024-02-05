@@ -12,7 +12,6 @@ export default function Home() {
   return (
     <>
       <section className={`${kadwa.className}`}>
-      <Topbar />
         <div className='bg-home-background bg-cover bg-center bg-fixed inset-0 h-screen'>
         <Navbar />
           <div className='max-w-screen-xl mx-auto text-white h-5/6 flex flex-col items-center justify-center'>

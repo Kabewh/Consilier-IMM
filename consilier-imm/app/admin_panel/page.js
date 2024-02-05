@@ -68,7 +68,6 @@ export default function AdminPanel () {
 
     return (
         <>
-        <Topbar/>
         <div className="h-screen">
             <Navbar />
             <div className="container mx-auto my-8 flex flex-col">

@@ -33,7 +33,6 @@ export default function Posts({ params }) {
 
     return (
         <>
-        <Topbar/>
         <div className="h-screen">
         <Navbar/>
             <div className="max-w-screen-xl mx-auto bg-white shadow-md mt-1 h-[88vh]">

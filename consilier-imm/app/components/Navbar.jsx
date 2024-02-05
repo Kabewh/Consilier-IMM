@@ -33,7 +33,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`p-3 text-lg text-white bg-orange-800 ${kadwa.className} shadow-md shadow-black/50`}
+        className={`p-3 text-md text-white bg-orange-800 ${kadwa.className} shadow-md shadow-black/50`}
       >
           <ul className="flex items-center gap-5 max-w-screen-2xl mx-auto">
             <Link href="/" className="cursor-pointer"><Image src={"/logo.png"} alt={"Logo"} width={50} height={50}/></Link>

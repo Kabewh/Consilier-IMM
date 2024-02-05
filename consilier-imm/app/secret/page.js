@@ -76,7 +76,6 @@ export default function Secret() {
             ) : (
                 null
             )}
-            <Topbar/>
                 <div>
             <Navbar />
                 <div className="max-w-screen-xl mx-auto">

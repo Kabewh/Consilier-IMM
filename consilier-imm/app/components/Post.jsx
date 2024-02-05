@@ -20,14 +20,14 @@ export default function Post({photo, title, description, id, date, deleteArticle
                 <Image src={photo} width={394} height={260} className=""/>
             </div>
             <div className="px-8 pt-8 flex flex-col">
-                <div className="flex flex-col space-y-5 min-h-[208px]">
+                <div className="flex flex-col space-y-5 h-[208px]">
                     <h1 className="text-2xl break-words hover:text-orange-800 cursor-pointer"> <Link key={id} href={"/secret/[id]"} as={`/secret/${id}`} className="hover:text-orange-800">{title}</Link></h1>
                     <p className="text-sm text-slate-500">{description}</p>
                     <Link key={id} href={"/secret/[id]"} as={`/secret/${id}`} className="hover:text-orange-800">CITESTE MAI MULT</Link>
                 </div>
-                <div className="mt-5 flex flex-col items-start justify-center text-slate-500 text-sm border-t">
+                <div className="mt-5 flex items-start justify-start space-x-28 text-slate-500 text-sm border-t">
                     <p className="py-5">{"Daniele Viola"} - {date}</p>
-                    {role === 'admin' ? <button className="px-2 bg-red-500 rounded" onClick={() => deleteArticle(id)}>X</button> : null}
+                    {role === 'admin' ? <button className="px-2 bg-red-500 rounded my-5" onClick={() => deleteArticle(id)}>X</button> : null}
                 </div>
             </div>
         </div>

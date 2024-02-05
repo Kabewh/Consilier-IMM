@@ -36,7 +36,6 @@ export default function LoginPage() {
 
   return (
     <>
-      <Topbar />
       <div className={`h-screen ${kadwa.className} bg-white`}>
         <Navbar />
         <section className="max-w-screen-xl h-[80vh] mx-auto flex justify-center items-center">

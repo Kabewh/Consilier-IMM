@@ -28,7 +28,6 @@ export default function AdaugaPostareNoua() {
 
     return(
         <>
-        <Topbar/>
         <div className="h-screen">
         <Navbar/>
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-24">

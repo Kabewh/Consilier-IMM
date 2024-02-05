@@ -17,7 +17,7 @@ export default function Post({photo, title, description, id, date, deleteArticle
     return (
         <div className={`h-[580px] w-[384px] w-48 bg-white hover:shadow-xl shadow-md transition ease-in-out duration-300 rounded ${playfair.className}`}>
             <div className="min-h-[260px]">
-                <Image src={photo} width={394} height={260} className=""/>
+                <Image src={photo} width={394} height={260} className="max-h-[260px]"/>
             </div>
             <div className="px-8 pt-8 flex flex-col">
                 <div className="flex flex-col space-y-5 h-[208px]">

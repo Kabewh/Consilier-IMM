@@ -34,7 +34,6 @@ export default function Contact() {
 
     return (
         <>
-            <Topbar/>
             <section className={`h-screen ${kadwa.className}`}>
                 <Navbar/>
                 <div className="flex flex-col justify-center items-center h-[80vh]">

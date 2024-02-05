@@ -72,7 +72,6 @@ export default function AdminPanel () {
             <Navbar />
             <div className="container mx-auto my-8 flex flex-col">
                 <h2 className="text-2xl font-bold mb-4">Utilizatori</h2>
-
                 {/* Add User Form */}
                 {users && (
                     <table className="min-w-full bg-white border border-gray-300">
